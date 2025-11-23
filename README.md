@@ -4,8 +4,8 @@
 
 ```
 docker build -t ocrapi-py
-docker run -it --rm -p 8080:8080 ocrapi-py
-```
+docker run -it --rm -p 10000:8080 ocrapi-py
+``` 
 
 # Push Docker Image
 

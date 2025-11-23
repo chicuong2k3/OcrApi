@@ -22,4 +22,4 @@ COPY app ./app
 
 ENV VALID_API_KEY=my-secret-api-key
 
-CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT}"]
+CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port 8080"]

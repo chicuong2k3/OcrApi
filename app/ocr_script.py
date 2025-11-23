@@ -1,16 +1,18 @@
-from paddleocr import PaddleOCR
+import easyocr
 
-# Load PaddleOCR model
-ocr = PaddleOCR(
-    use_angle_cls=True,
-    lang='en'
-)
+reader = easyocr.Reader(['en']) 
 
 def run_ocr(image_path: str):
-    result = ocr.ocr(image_path)
-    texts = []
+    try:
+        results = reader.readtext(image_path)
+    except Exception as e:
+        print("OCR error:", e)
+        return ""
 
-    for line in result:
-        if len(line) >= 2 and len(line[1]) >= 1:
-            texts.append(line[1][0])
-    return [t.strip() for t in texts if t.strip()]
+    texts = []
+    for _, text, conf in results:
+        text = text.strip()
+        if text:
+            texts.append(text)
+
+    return "\n".join(texts)

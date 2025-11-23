@@ -8,7 +8,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libxext6 \
     libxrender1 \
     libgomp1 \
-    libgl1 \
     wget \
     ca-certificates \
     && rm -rf /var/lib/apt/lists/*
@@ -22,4 +21,4 @@ COPY app ./app
 
 ENV VALID_API_KEY=my-secret-api-key
 
-CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port 8080"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"]

@@ -3,7 +3,7 @@
 # Build and Run
 
 ```
-docker build -t ocrapi-py
+docker build -t ocrapi-py .
 docker run -it --rm -p 10000:8080 ocrapi-py
 ``` 
 

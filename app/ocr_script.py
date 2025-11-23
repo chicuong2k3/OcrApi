@@ -7,13 +7,6 @@ ocr = PaddleOCR(
 )
 
 def run_ocr(image_path: str):
-    result = ocr.ocr(image_path, cls=True)
-
-    lines = []
-    for block in result:
-        for line in block:
-            text = line[1][0].strip()
-            if text:
-                lines.append(text)
-
-    return lines
+    result = ocr.ocr(image_path)
+    texts = [line[1][0] for line in result]  
+    return [t.strip() for t in texts if t.strip()]
